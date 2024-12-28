@@ -1,0 +1,26 @@
+{
+  "name": "automeeting",
+  "title": "AutoMeeting",
+  "description": "Schedule meetings with Google Meet and Notion integration",
+  "icon": "command-icon.png",
+  "author": "Your Name",
+  "categories": ["AI"],
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "schedule",
+      "title": "Schedule Meeting",
+      "description": "Schedule a meeting with Google Meet and Notion integration",
+      "mode": "view",
+      "arguments": [
+        {
+          "name": "meeting",
+          "placeholder": "First call with john@company.com tomorrow at 2pm",
+          "type": "text",
+          "required": true
+        }
+      ]
+    }
+  ],
+  "dependencies": {}
+} 

@@ -65,7 +65,11 @@ class MeetingScheduler:
     def _setup_google_calendar(self):
         """Set up Google Calendar API connection."""
         logger.info("Setting up Google Calendar connection")
-        SCOPES = ['https://www.googleapis.com/auth/calendar']
+        SCOPES = [
+            'https://www.googleapis.com/auth/calendar',
+            'https://www.googleapis.com/auth/calendar.events',
+            'https://www.googleapis.com/auth/calendar.readonly'
+        ]
         creds = None
         
         if os.path.exists('token.pickle'):
@@ -81,7 +85,7 @@ class MeetingScheduler:
                 logger.info("Initiating new Google Calendar authentication flow")
                 flow = InstalledAppFlow.from_client_secrets_file(
                     os.environ.get('GOOGLE_CREDENTIALS_FILE'), SCOPES)
-                creds = flow.run_local_server(port=0)
+                creds = flow.run_local_server(port=0, access_type='offline', prompt='consent')
             
             logger.info("Saving new credentials to token.pickle")
             with open('token.pickle', 'wb') as token:
